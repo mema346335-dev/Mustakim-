@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mustakim Blog - News Portal with Admin</title>
+<style>
+  :root{
+    --bg:#121212;
+    --text:#f1f1f1;
+    --primary:#ff3b3b;
+    --card-bg:#1e1e1e;
+    --accent:#ff6666;
+  }
+  [data-theme="light"]{
+    --bg:#f5f5f5;
+    --text:#222;
+    --primary:#ff3b3b;
+    --card-bg:#fff;
+    --accent:#ff6666;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  body{background:var(--bg);color:var(--text);transition:0.3s;}
+  a{color:var(--primary);text-decoration:none;}
+  header{background:var(--card-bg);padding:1.5rem 1rem;text-align:center;border-bottom:2px solid var(--accent);}
+  header h1{font-size:2.5rem;margin-bottom:0.5rem;}
+  header p{color:var(--accent);}
+  nav{display:flex;justify-content:center;align-items:center;padding:0.8rem 0;background:var(--card-bg);border-bottom:2px solid var(--accent);gap:20px;}
+  nav a{font-weight:bold;transition:0.3s;}
+  nav a:hover{color:var(--accent);}
+  .theme-toggle{margin-left:20px;padding:0.4rem 0.8rem;background:var(--primary);border:none;color:#fff;border-radius:5px;cursor:pointer;}
+  .ticker-wrapper{overflow:hidden;background:var(--card-bg);border-bottom:2px solid var(--accent);white-space:nowrap;padding:0.8rem 0;font-weight:bold;color:var(--accent);}
+  .ticker{display:inline-block;padding-left:100%;animation:ticker 20s linear infinite;}
+  @keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
+  .container{max-width:1000px;margin:2rem auto;padding:0 1rem;}
+  section{margin-bottom:3rem;}
+  section h2{font-size:2rem;color:var(--primary);margin-bottom:1rem;border-bottom:2px solid var(--accent);display:inline-block;padding-bottom:0.3rem;}
+  .card{background:var(--card-bg);padding:1rem;border-radius:10px;margin-bottom:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform 0.3s;}
+  .card:hover{transform:translateY(-5px);}
+  .card h3{color:var(--accent);margin-bottom:0.5rem;}
+  .contact-form,.admin-form{background:var(--card-bg);padding:1.5rem;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+  .contact-form input,.contact-form textarea,.admin-form input,.admin-form textarea{width:100%;padding:0.7rem;margin:0.5rem 0;border-radius:5px;border:1px solid #555;background:var(--bg);color:var(--text);}
+  .contact-form button,.admin-form button{padding:0.7rem 1.5rem;background:var(--primary);color:#fff;border:none;border-radius:5px;cursor:pointer;margin-top:0.5rem;}
+  footer{text-align:center;background:var(--card-bg);padding:1rem;border-top:2px solid var(--accent);color:var(--accent);}
+  @media(max-width:768px){nav{flex-wrap:wrap;} header h1{font-size:2rem;}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Mustakim Blog</h1>
+  <p>Dark-Themed News Portal 📰🖤</p>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#news">News</a>
+  <a href="#articles">Articles</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a href="#admin">Admin</a>
+  <button class="theme-toggle" onclick="toggleTheme()">☀️ Light Mode</button>
+</nav>
+
+<div class="ticker-wrapper">
+  <div class="ticker">Breaking: AI Updates 🚀 | India Wins Cricket 🏏 | Mustakim Blog Hits 1M Views 🌟</div>
+</div>
+
+<div class="container">
+
+  <!-- Home Section -->
+  <section id="home">
+    <h2>Welcome</h2>
+    <div class="card">
+      <h3>Welcome to Mustakim Blog</h3>
+      <p>This is your ultimate dark-themed news portal. Get the latest news, trending articles, and tech updates all in one place.</p>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section id="news">
+    <h2>Latest News</h2>
+    <div id="news-container">
+      <div class="card"><h3>Breaking: New AI Model Released</h3><p>The latest AI language model offers unprecedented capabilities.</p></div>
+      <div class="card"><h3>Sports: India Wins Big</h3><p>Thrilling cricket match victory across the nation.</p></div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section id="articles">
+    <h2>Articles</h2>
+    <div id="articles-container">
+      <div class="card"><h3>Tech: How to Learn AI</h3><p>Step-by-step guide to start learning AI and building projects.</p></div>
+      <div class="card"><h3>Lifestyle: Healthy Living Tips</h3><p>Practical tips to maintain a balanced and healthy lifestyle.</p></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About</h2>
+    <div class="card"><h3>About Mustakim Blog</h3><p>One-stop dark-themed news and articles portal for tech, lifestyle, and trending news.</p></div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-form">
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email">
+      <textarea rows="5" placeholder="Your Message"></textarea>
+      <button>Send Message</button>
+    </div>
+  </section>
+
+  <!-- Admin Section -->
+  <section id="admin">
+    <h2>Admin Panel</h2>
+    <div class="admin-form">
+      <h3>Add News</h3>
+      <input type="text" id="admin-news-title" placeholder="News Title">
+      <textarea id="admin-news-content" rows="4" placeholder="News Content"></textarea>
+      <button onclick="addNews()">Add News</button>
+
+      <h3>Add Article</h3>
+      <input type="text" id="admin-article-title" placeholder="Article Title">
+      <textarea id="admin-article-content" rows="4" placeholder="Article Content"></textarea>
+      <button onclick="addArticle()">Add Article</button>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  &copy; 2025 Mustakim Blog | All Rights Reserved
+</footer>
+
+<script>
+  function toggleTheme() {
+    const body = document.body;
+    const currentTheme = body.getAttribute('data-theme');
+    if(currentTheme==='light'){
+      body.removeAttribute('data-theme');
+      document.querySelector('.theme-toggle').textContent='☀️ Light Mode';
+    } else {
+      body.setAttribute('data-theme','light');
+      document.querySelector('.theme-toggle').textContent='🖤 Dark Mode';
+    }
+  }
+
+  function addNews(){
+    const title = document.getElementById('admin-news-title').value;
+    const content = document.getElementById('admin-news-content').value;
+    if(title && content){
+      const container = document.getElementById('news-container');
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
+      container.prepend(div);
+      document.getElementById('admin-news-title').value='';
+      document.getElementById('admin-news-content').value='';
+    }
+  }
+
+  function addArticle(){
+    const title = document.getElementById('admin-article-title').value;
+    const content = document.getElementById('admin-article-content').value;
+    if(title && content){
+      const container = document.getElementById('articles-container');
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
+      container.prepend(div);
+      document.getElementById('admin-article-title').value='';
+      document.getElementById('admin-article-content').value='';
+    }
+  }
+</script>
+
+</body>
+</html>
